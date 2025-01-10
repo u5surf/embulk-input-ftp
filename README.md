@@ -103,7 +103,7 @@ in:
 ## Build
 
 ```
-$ ./gradlew embulk-input-ftp:gem
+$ ./gradlew gem
 ```
 
 ## Release
