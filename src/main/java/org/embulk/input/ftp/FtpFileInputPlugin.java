@@ -187,7 +187,7 @@ public class FtpFileInputPlugin
         try {
             int defaultPort = FTP_DEFULAT_PORT;
             if (task.getSsl()) {
-                //client.setSSLSocketFactory(SSLPlugins.newSSLSocketFactory(task.getSSLConfig(), task.getHost()));
+                client.setSocketFactory(SSLPlugins.newSSLSocketFactory(task.getSSLConfig(), task.getHost()));
                 if (task.getSslExplicit()) {
                     client = new FTPSClient(false);
                     defaultPort = FTPES_DEFAULT_PORT;
@@ -195,8 +195,6 @@ public class FtpFileInputPlugin
                 }
                 else {
                     client = new FTPSClient(true);
-                // client.setKeyManager();
-                // client.setTrustManager();
                     defaultPort = FTPS_DEFAULT_PORT;
                     log.info("Using FTPS(FTPS/implicit) mode");
                 }
