@@ -204,12 +204,12 @@ public class FtpFileInputPlugin
             // for commons-net client
             client.setControlKeepAliveTimeout(Duration.ofSeconds(60));
             client.setConnectTimeout(30);
-            client.setSoTimeout(60);
             client.setDataTimeout(Duration.ofSeconds(60));
             client.setAutodetectUTF8(true);
 
             client.connect(task.getHost(), port);
             log.info("Connecting to {}:{}", task.getHost(), port);
+            client.setSoTimeout(60);
 
             if (task.getUser().isPresent()) {
                 log.info("Logging in with user " + task.getUser().get());
